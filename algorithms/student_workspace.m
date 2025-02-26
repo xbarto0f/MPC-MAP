@@ -7,6 +7,9 @@ if (read_only_vars.counter == 1)
     public_vars = init_particle_filter(read_only_vars, public_vars);
     public_vars = init_kalman_filter(read_only_vars, public_vars);
 
+    public_vars.lidar_data = zeros(1000,8);
+    public_vars.gnss_data = zeros(1000,2);
+
 end
 
 % 9. Update particle filter
@@ -25,6 +28,15 @@ public_vars.path = plan_path(read_only_vars, public_vars);
 public_vars = plan_motion(read_only_vars, public_vars);
 
 
+if (read_only_vars.counter < 1001)
+    public_vars.lidar_data(read_only_vars.counter,:) = read_only_vars.lidar_distances;
+    public_vars.gnss_data(read_only_vars.counter,:) = read_only_vars.gnss_position;
+elseif (read_only_vars.counter == 1001)
+    figure(2)
+    histogram(public_vars.lidar_data(:,1))
+    figure(3)
+    histogram(public_vars.gnss_data(:,1))
+end
 
 end
 
