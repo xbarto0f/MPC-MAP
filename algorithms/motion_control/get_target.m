@@ -9,12 +9,13 @@ function [G, vG, public_vars] = get_target(P, public_vars)
 
     if p_index >= length(path)
         G = path(end,:);
-        vG = [0,0];
+        G_vec = path(end,:) - path(end-1,:);
+        vG = G_vec/norm(G_vec)* 1;
         return
     end
 
     G = path(p_index,:);
-    G_vec = path(p_index+1,:) - public_vars.estimated_pose(1:2);
+    G_vec = path(p_index+1,:) - path(p_index,:);
     vG = G_vec/norm(G_vec)* 1;
 end
 

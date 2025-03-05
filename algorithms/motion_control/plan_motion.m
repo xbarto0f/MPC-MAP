@@ -37,7 +37,7 @@ d = read_only_vars.agent_drive.interwheel_dist;
 theta = r_pose(3);
 
 epsilon = 0.2;
-kappa = 0.1;
+kappa = 1/(10*epsilon); 
 
 P = r_pose(1:2)+epsilon*[cos(theta), sin(theta)];
 
