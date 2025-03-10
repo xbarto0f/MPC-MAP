@@ -33,7 +33,10 @@ if (read_only_vars.counter == 1)
     y_smooth = spline(t, y, t_fine);
     public_vars.path  = [x_smooth(:), y_smooth(:)];
     public_vars.path_index = 1;
+    
 
+
+    public_vars.weights = [];
 end
 
 % 9. Update particle filter
