@@ -59,8 +59,8 @@ l = v - (omega * d)/2;
 
 
 %% 
-r=0;
-l=0;
+% r=0.05;
+% l=0.1;
 public_vars.motion_vector = [r, l];
 
 end

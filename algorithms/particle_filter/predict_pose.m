@@ -9,7 +9,7 @@ function [new_pose] = predict_pose(old_pose, motion_vector, read_only_vars)
     r = motion_vector(1);
     l = motion_vector(2);
     dt = read_only_vars.sampling_period;    
-    
+
     v = (r + l) / 2;
     omega = (r - l) / d;
 
@@ -23,7 +23,7 @@ function [new_pose] = predict_pose(old_pose, motion_vector, read_only_vars)
         y_new = y + v * sin(theta) * dt;
         theta_new = theta;
     end
-
-    new_pose = [x_new; y_new; theta_new];
+    
+    new_pose = [x_new+(randn()/20); y_new+(randn()/20); theta_new+(randn()/20)];
 end
 
