@@ -1,6 +1,6 @@
 function [particles] = update_particle_filter(read_only_vars, public_vars)
 %UPDATE_PARTICLE_FILTER Summary of this function goes here
-
+map_limits = read_only_vars.map.limits;
 particles = public_vars.particles;
 
 % I. Prediction
@@ -16,7 +16,7 @@ end
 weights = weight_particles(measurements, read_only_vars.lidar_distances);
 
 % III. Resampling
-particles = resample_particles(particles, weights);
+particles = resample_particles(particles, weights, map_limits);
 
 
 end
