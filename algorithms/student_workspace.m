@@ -32,11 +32,23 @@ if (read_only_vars.counter == 1)
     x_smooth = spline(t, x, t_fine);
     y_smooth = spline(t, y, t_fine);
     public_vars.path  = [x_smooth(:), y_smooth(:)];
+    %%
+
     public_vars.path_index = 1;
     
-
-
+    %% WEEK 4
+    
     public_vars.weights = [];
+
+    %% WEEK 5 - path for outdoor_1 map
+    
+    path = [2, 2;  
+        8, 8;
+        14, 7.5;
+        16,2];
+    
+    public_vars.path = path;
+
 end
 
 % 9. Update particle filter

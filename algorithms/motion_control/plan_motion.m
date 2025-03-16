@@ -29,7 +29,7 @@ function [public_vars] = plan_motion(read_only_vars, public_vars)
 % end
 
 %% Week 3 Task 3
-public_vars.estimated_pose = read_only_vars.mocap_pose;
+% public_vars.estimated_pose = read_only_vars.mocap_pose;
 
 r_pose = public_vars.estimated_pose;
 
