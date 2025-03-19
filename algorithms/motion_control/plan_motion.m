@@ -47,8 +47,8 @@ P = r_pose(1:2)+epsilon*[cos(theta), sin(theta)];
 
 vP = kappa * (G - P) + vG;
 
-if norm(vP) > read_only_vars.agent_drive.max_vel
-    vP = vP/norm(vP)*read_only_vars.agent_drive.max_vel;
+if norm(vP) > public_vars.max_vel%read_only_vars.agent_drive.max_vel
+    vP = vP/norm(vP)*public_vars.max_vel; %read_only_vars.agent_drive.max_vel;
 end
 
 v =  vP(1)*cos(theta) + vP(2)*sin(theta);

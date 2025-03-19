@@ -12,9 +12,9 @@ dt = sampling_period;
 R = kf.R;
 
 
-new_mu = [x+cos(theta)*v*dt; y+sin(theta)*v*dt; theta+omega*dt];
+new_mu = [x+cos(theta)*v*dt, y+sin(theta)*v*dt, theta+omega*dt];
 G = [1, 0, -sin(theta)*v*dt; 0, 1, cos(theta)*v*dt; 0, 0, 1];
-new_sigma = G*sigma*transpose(G) + R;
+new_sigma = G*sigma*G' + R;
 
 % new_mu = mu;
 % new_sigma = sigma;

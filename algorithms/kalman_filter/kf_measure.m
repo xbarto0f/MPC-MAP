@@ -4,18 +4,11 @@ function [new_mu, new_sigma] = kf_measure(mu, sigma, z, kf)
 C = kf.C;
 Q = kf.Q;
 
-K = sigma*transpose(C)*(C*sigma*transpose(C)+Q)^(-1);
+K = sigma*C'/(C*sigma*C'+Q);
 
-% mu
-% K
-% (z-C*mu)
-% 
-% K*(z-C*mu)
-
-new_mu = mu + K*(z-C*mu);
+new_mu = mu + (K*(z'-C*mu'))';
 new_sigma = (eye(3,3)-K*C)*sigma;
 
-new_mu = transpose(new_mu(:,1));
 % new_mu = mu;
 % new_sigma = sigma;
 
