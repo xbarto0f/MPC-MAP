@@ -1,7 +1,7 @@
 function [path] = plan_path(read_only_vars, public_vars)
 %PLAN_PATH Summary of this function goes here
 
-planning_required = 0;
+planning_required = 1;
 
 if planning_required
     
