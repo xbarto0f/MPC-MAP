@@ -59,6 +59,7 @@ if (read_only_vars.counter == 1)
     
     %% WEEK 6
     public_vars.estimated_pose = read_only_vars.mocap_pose;
+    public_vars.planning_required = 1;
 end
 
 % 9. Update particle filter
@@ -85,8 +86,9 @@ end
 % end
 
 % 12. Path planning
-public_vars.path = plan_path(read_only_vars, public_vars);
+[public_vars] = plan_path(read_only_vars, public_vars);
 
+public_vars = plan_motion(read_only_vars, public_vars); % TODO
 % 
 % if (read_only_vars.counter < 1001)
 %     public_vars.lidar_data(read_only_vars.counter,:) = read_only_vars.lidar_distances;
