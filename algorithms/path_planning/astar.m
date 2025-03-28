@@ -25,7 +25,7 @@ for i = 1:m
 end
 occupancy_grid = expanded_grid;
 %%
-% fprintf('Starting A* from [%d, %d] to [%d, %d]\n', path_start(1), path_start(2), goal(1), goal(2));
+fprintf('Starting A* from [%d, %d] to [%d, %d]\n', path_start(1), path_start(2), goal(1), goal(2));
 
 % Define movement directions (4-way or 8-way)
 directions = [0 1; 1 0; 0 -1; -1 0; 1 1; 1 -1; -1 1; -1 -1];
