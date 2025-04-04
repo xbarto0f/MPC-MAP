@@ -6,9 +6,9 @@ public_vars.kf.R = diag([0.0007, 0.0007, 0.0007]);
 public_vars.kf.Q = [0.2502,0.0080; 0.0080,0.2469];
 
 % public_vars.mu = [2,2,pi/2];
-public_vars.mu = [mean(read_only_vars.gnss_history), 0];
+public_vars.mu = [mean(read_only_vars.gnss_history(end-65:end,:)), 0];
 % public_vars.sigma = zeros(3,3);
 public_vars.sigma = ones(3)*20;
-public_vars.sigma(1:2,1:2) = cov(read_only_vars.gnss_history);
+public_vars.sigma(1:2,1:2) = cov(read_only_vars.gnss_history(end-99:end,:));
 end
 

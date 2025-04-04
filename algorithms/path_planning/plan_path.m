@@ -7,6 +7,8 @@ if public_vars.planning_required
     public_vars.path = astar(read_only_vars, public_vars);
     
     public_vars.path = smooth_path(public_vars.path);
+
+    public_vars.path_index =1;
     public_vars.planning_required = 0;
 else
     

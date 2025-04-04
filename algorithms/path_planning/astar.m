@@ -5,7 +5,7 @@ goal = max(round(read_only_vars.discrete_map.goal), [1 1]);
 occupancy_grid = read_only_vars.discrete_map.map;
 
 %% Expand obstacles by 2 (0.4)
-ex_by = 2;
+ex_by = 1;
 expanded_grid = occupancy_grid;
 [m, n] = size(occupancy_grid);
 for i = 1:m
