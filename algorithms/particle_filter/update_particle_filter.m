@@ -16,6 +16,6 @@ function [particles] = update_particle_filter(read_only_vars, public_vars)
     weights = weight_particles(measurements, read_only_vars.lidar_distances);
     
     % III. Resampling
-    particles = resample_particles(particles, weights, map_limits, public_vars.pf_no_rnd);
+    particles = resample_particles(particles, weights, map_limits, public_vars);
 end
 

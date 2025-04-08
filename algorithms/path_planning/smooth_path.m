@@ -3,7 +3,7 @@ function [new_path] = smooth_path(old_path)
 
 new_path = old_path;
 
-alpha = 0.3;
+alpha = 0.8;
 beta = 0.5;
 
 for i = 2:size(new_path, 1) - 1

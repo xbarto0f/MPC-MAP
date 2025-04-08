@@ -19,6 +19,7 @@ function [public_vars] = student_workspace(read_only_vars,public_vars)
         
         public_vars.pf_inited = 0;
         public_vars.pf_no_rnd = 0;
+        public_vars.pf_type = 1;
     end
     % 
     % % check if is robot going from inside to outside
@@ -91,6 +92,7 @@ function [public_vars] = student_workspace(read_only_vars,public_vars)
                public_vars.help_counter = 1;
                
                public_vars.init_pf_w_gnns = 1;
+               public_vars.pf_type = 2;
                public_vars.state = 'PF_INIT';
                disp("SWITCHING TO PF")
             end
