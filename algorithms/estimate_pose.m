@@ -1,28 +1,10 @@
-% function [estimated_pose] = estimate_pose(public_vars, read_only_vars)
-% %ESTIMATE_POSE Summary of this function goes here
-% 
-%     dt = read_only_vars.sampling_period;
-%     est_pos_history = read_only_vars.est_position_history;
-% 
-%     if (public_vars.kf_enabled)
-%         estimated_pose = public_vars.mu;
-%     elseif (public_vars.pf_enabled)
-%         N = size(public_vars.particles, 1);
-%         estimated_pose = sum(public_vars.particles, 1) / N;
-% 
-%     else
-%         estimated_pose = public_vars.estimated_pose;
-%     end
-% 
-% end
-% 
 function [public_vars] = estimate_pose(public_vars, read_only_vars)
 %ESTIMATE_POSE Summary of this function goes here
     
     dt = read_only_vars.sampling_period;
     est_pos_history = read_only_vars.est_position_history;
     
-    threshold_speed = 4.0;    % Maximální stabilní rychlost
+    threshold_speed = 4.0;    
  
 
     if (public_vars.kf_enabled)

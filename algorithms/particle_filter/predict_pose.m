@@ -17,6 +17,6 @@ function [new_pose] = predict_pose(old_pose, motion_vector, read_only_vars)
     y_new = y + (v * sin(theta) * dt);
     theta_new = theta + (omega*dt);
     
-    new_pose = [x_new+(randn()/60); y_new+(randn()/60); theta_new+(randn()/100)];
+    new_pose = [x_new+(randn()/60); y_new+(randn()/60); theta_new+(randn()/8)];
 end
 

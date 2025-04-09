@@ -196,8 +196,8 @@ while ~isempty(open_list)
     closed_list(key) = current_node;
 
     if isequal([x, y], goal)
-        path = reconstruct_path(current_node, closed_list)
-        path = (path / 5)
+        path = reconstruct_path(current_node, closed_list);
+        path = (path / 5);
         return;
     end
 
@@ -264,7 +264,7 @@ function penalty_map = compute_penalty_map(occupancy_grid)
             if occupancy_grid(y, x) == 1
                 penalty_map(y, x) = 0;
                 visited(y, x) = true;
-                queue(end + 1, :) = [x, y]; % enqueue
+                queue(end + 1, :) = [x, y]; 
             end
         end
     end
@@ -273,7 +273,7 @@ function penalty_map = compute_penalty_map(occupancy_grid)
 
     while ~isempty(queue)
         current = queue(1, :);
-        queue(1, :) = [];  % dequeue
+        queue(1, :) = []; 
 
         for i = 1:4
             nx = current(1) + directions(i, 1);
@@ -282,12 +282,11 @@ function penalty_map = compute_penalty_map(occupancy_grid)
             if nx >= 1 && ny >= 1 && nx <= cols && ny <= rows && ~visited(ny, nx)
                 penalty_map(ny, nx) = penalty_map(current(2), current(1)) + 1;
                 visited(ny, nx) = true;
-                queue(end + 1, :) = [nx, ny];  % enqueue
+                queue(end + 1, :) = [nx, ny];  
             end
         end
     end
 
-    % Convert to soft penalties (avoid division by zero)
     penalty_map = 1 ./ (penalty_map + 1);
 
 end

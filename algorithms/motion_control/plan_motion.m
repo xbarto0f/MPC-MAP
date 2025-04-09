@@ -48,13 +48,11 @@ function [public_vars] = plan_motion(read_only_vars, public_vars)
 
     P = r_pose(1:2) + epsilon * [cos(theta), sin(theta)];
 
-    % Anticolision
+
     collision_thresh = 0.4; 
     min_dist = min(l_dist);
-    % reverse_mode = false; 
-
     if (min_dist < collision_thresh)
-        % direction
+        % anticolision
         [~, min_idx] = min(l_dist);
         
         if min_idx == 1 || min_idx == 2 || min_idx == 8
@@ -80,7 +78,12 @@ function [public_vars] = plan_motion(read_only_vars, public_vars)
             omega = pi/2; 
             % reverse_mode = true;
         end
+    elseif (public_vars.ignore_motion_plan)
+        % ignoring motion planning
+        public_vars.motion_vector = [0.2,0.2];
+        return;
     else
+         % normal motion planning
          if isempty(public_vars.path)
             vP = 0.5 * [cos(theta), sin(theta)];
             omega = 0;
@@ -120,7 +123,7 @@ function [public_vars] = plan_motion(read_only_vars, public_vars)
 
     r = v + (omega * d) / 2; 
     l = v - (omega * d) / 2;
-
+    
     public_vars.motion_vector = [r, l];
 
 end
