@@ -168,7 +168,7 @@ function [public_vars] = student_workspace(read_only_vars,public_vars)
             % robot entering outside
              if (~any(isnan(read_only_vars.gnss_position)))
                 public_vars.ignore_motion_plan = 1;
-                if(~any(isnan(read_only_vars.gnss_history(max(1, end-10):end, :)), 'all'))
+                if(~any(isnan(read_only_vars.gnss_history(max(1, end-20):end, :)), 'all'))
                     public_vars.state = 'KF_INIT';
                     public_vars.help_counter = 1;
                     public_vars.pf_enabled = 0; 
